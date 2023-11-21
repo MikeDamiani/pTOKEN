@@ -69,7 +69,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
     /**
      * @custom:section                           ** CONSTRUCTOR **
      */
-    constructor(address _feeAddress, address _backing) ERC20("pantheon TOKEN", "pTOKEN"){
+    constructor(address _feeAddress, address _backing) ERC20("pantheon TOKEN", "pTOKEN") Ownable2Step() {
         if (_feeAddress == address(0)) revert ZeroAddressNotAllowed();
         if (_backing == address(0)) revert ZeroAddressNotAllowed();
 

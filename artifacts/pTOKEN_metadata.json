@@ -9,6 +9,22 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_feeAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_backing",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "target",
 						"type": "address"
 					}
@@ -151,6 +167,11 @@
 				"type": "error"
 			},
 			{
+				"inputs": [],
+				"name": "ReentrancyGuardReentrantCall",
+				"type": "error"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -220,25 +241,6 @@
 					}
 				],
 				"name": "MintAndRedeemFeeUpdated",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "previousOwner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnershipTransferStarted",
 				"type": "event"
 			},
 			{
@@ -398,13 +400,6 @@
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "acceptOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -647,19 +642,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "pendingOwner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -833,7 +815,7 @@
 		],
 		"devdoc": {
 			"author": "Michael Damiani",
-			"custom:idea": "The Idea behind this token model has been inspired by Jaypeggers",
+			"custom:purpose": "The main purpose of pTOKENs is to generate revenue and contribute to bribing economy of ve(3;3) Dexes while being backed",
 			"errors": {
 				"AddressEmptyCode(address)": [
 					{
@@ -912,6 +894,11 @@
 						"details": "The caller account is not authorized to perform an operation."
 					}
 				],
+				"ReentrancyGuardReentrantCall()": [
+					{
+						"details": "Unauthorized reentrant call."
+					}
+				],
 				"SafeERC20FailedOperation(address)": [
 					{
 						"details": "An operation with an ERC20 token failed."
@@ -936,9 +923,6 @@
 			},
 			"kind": "dev",
 			"methods": {
-				"acceptOwnership()": {
-					"details": "The new owner accepts the ownership transfer."
-				},
 				"allowance(address,address)": {
 					"details": "See {IERC20-allowance}."
 				},
@@ -986,9 +970,6 @@
 				"owner()": {
 					"details": "Returns the address of the current owner."
 				},
-				"pendingOwner()": {
-					"details": "Returns the address of the pending owner."
-				},
 				"redeem(uint256)": {
 					"params": {
 						"_amount": ": is the amount of pTOKEN that the user want to burn in order to redeem the corrisponding amount of Backing"
@@ -1025,7 +1006,7 @@
 					"details": "See {IERC20-transferFrom}. Emits an {Approval} event indicating the updated allowance. This is not required by the EIP. See the note at the beginning of {ERC20}. NOTE: Does not update the allowance if the current allowance is the maximum `uint256`. Requirements: - `from` and `to` cannot be the zero address. - `from` must have a balance of at least `value`. - the caller must have allowance for ``from``'s tokens of at least `value`."
 				},
 				"transferOwnership(address)": {
-					"details": "Starts the ownership transfer of the contract to a new account. Replaces the pending transfer if there is one. Can only be called by the current owner."
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
 			"stateVariables": {
@@ -1039,7 +1020,7 @@
 					"custom:section": "** CONSTANTS **"
 				}
 			},
-			"title": "PANTHEON, Reserve Currency and Store of Value for $ETH",
+			"title": "pTOKEN, Yield bearing token backed by ERC20",
 			"version": 1
 		},
 		"userdoc": {
@@ -1076,13 +1057,13 @@
 					"notice": "Team fee can't be more than 4% and less than 1% Incentives for liquidity providers are included in the Team fee (FEES)"
 				}
 			},
-			"notice": "The ETH / PANTHEON ratio is designed to appreciate for every mints and redeems that occur.",
+			"notice": "The backing / pTOKEN ratio is designed to appreciate for every mints and redeems that occur.",
 			"version": 1
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"pTOKEN.sol": "pTOKEN"
+			"pTOKEN2.sol": "pTOKEN"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -1104,28 +1085,12 @@
 				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
 			]
 		},
-		"@openzeppelin/contracts/access/Ownable2Step.sol": {
-			"keccak256": "0x5d3e5de9eadfa1f8a892eb2e95bbebd3e4b8c8ada5b76f104d383fea518fa688",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://cde108962511e6a4d3cfb7b6fb6a36bdcfa300761c17dad2d7dd87d4f8117b48",
-				"dweb:/ipfs/Qmf7YxUVK68JedWybWfXvzLCegsD95DtGc3mbpEWkWSMm8"
-			]
-		},
 		"@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
 			"keccak256": "0x60c65f701957fdd6faea1acb0bb45825791d473693ed9ecb34726fdfaa849dd7",
 			"license": "MIT",
 			"urls": [
 				"bzz-raw://ea290300e0efc4d901244949dc4d877fd46e6c5e43dc2b26620e8efab3ab803f",
 				"dweb:/ipfs/QmcLLJppxKeJWqHxE2CUkcfhuRTgHSn8J4kijcLa5MYhSt"
-			]
-		},
-		"@openzeppelin/contracts/security/ReentrancyGuard.sol": {
-			"keccak256": "0xa535a5df777d44e945dd24aa43a11e44b024140fc340ad0dfe42acf4002aade1",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://41319e7f621f2dc3733511332c4fd032f8e32ad2aa7fd6f665c19741d9941a34",
-				"dweb:/ipfs/QmcYR3bd862GD1Bc7jwrU9bGxrhUu5na1oP964bDCu2id1"
 			]
 		},
 		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
@@ -1192,12 +1157,20 @@
 				"dweb:/ipfs/QmNgFkoXNWoUbAyw71rr1sKQ95Rj2GfvYiWg79xEYDn2NY"
 			]
 		},
-		"pTOKEN.sol": {
-			"keccak256": "0x4b9443ece159a52c763d88ebc09a392f59a3db619b7401ca8d963d45f839b93b",
+		"@openzeppelin/contracts/utils/ReentrancyGuard.sol": {
+			"keccak256": "0xf980daa263b661ab8ddee7d4fd833c7da7e7995e2c359ff1f17e67e4112f2236",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://282e4949a24fc0e27cf7f11fc0cdcf7f7226dc109fae1f138d0a73fae5dc9963",
-				"dweb:/ipfs/QmQcHp3tMTMFARpDUvL1Kc7xAyFphxM5ogLnngYS8jHM7T"
+				"bzz-raw://7448ab095d6940130bcf76ba47a2eab14148c83119523b93dd89f6d84edd6c02",
+				"dweb:/ipfs/QmawrZ4voKQjH3oomXT3Kuheb3Mnmo2VvVpxg8Ne5UJUrd"
+			]
+		},
+		"pTOKEN2.sol": {
+			"keccak256": "0x58ec9375e0b0ac448d5c6b02c6eda61b60639b5fe0786079a7144fa7b8643320",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://66be62498deaa8c4c5f5bd453379fd30d3b936cb517fb32c73124e98e179a8ae",
+				"dweb:/ipfs/QmdhgHzqayZJ3fXprPdm7v7M6kf4wgJkS6yUbR2dJUquf3"
 			]
 		}
 	},
