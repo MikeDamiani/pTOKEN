@@ -1,11 +1,11 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import {Ownable2Step} from "@openzeppelin/contracts/access/Ownable2Step.sol";
-import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts@v4.9.3/token/ERC20/extensions/ERC20Burnable.sol";
+import {Ownable2Step} from "@openzeppelin/contracts@v4.9.3/access/Ownable2Step.sol";
+import {ReentrancyGuard} from "@openzeppelin/contracts@v4.9.3/security/ReentrancyGuard.sol";
+import {SafeERC20} from "@openzeppelin/contracts@v4.9.3/token/ERC20/utils/SafeERC20.sol";
+import {IERC20} from "@openzeppelin/contracts@v4.9.3/token/ERC20/IERC20.sol";
 /**
  * @title pTOKEN, Yield bearing token backed by ERC20
  *
@@ -46,7 +46,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
     uint256 public totalBacking;
     address payable public feeAddress;
 
-    bool private start;
+    bool public start;
 
     /**
      * @custom:section                           ** EVENTS **
@@ -127,19 +127,19 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
     function redeem(uint256 _amount) external nonReentrant {
         if (_amount < _MIN) revert MustTradeOverMin();
 
-        uint256 pToken = _PTOKENtoBACKING(_amount);
+        uint256 backing = _PTOKENtoBACKING(_amount);
 
-        uint256 backingToFeeAddress = _amount / FEES;
-        uint256 backingToSender = (_amount * MINT_AND_REDEEM_FEE) / _FEE_BASE_1000;
+        uint256 backingToFeeAddress = backing / FEES;
+        uint256 backingToSender = (backing * MINT_AND_REDEEM_FEE) / _FEE_BASE_1000;
         totalBacking -= (backingToSender + backingToFeeAddress);
 
-        _burn(msg.sender, pToken);
+        _burn(msg.sender, _amount);
 
         SafeERC20.safeTransferFrom(_BACKING, address(this), feeAddress, backingToFeeAddress);
 
         SafeERC20.safeTransferFrom(_BACKING, address(this), msg.sender, backingToSender);
 
-        emit PriceAfterRedeem(block.timestamp, pToken, _amount);
+        emit PriceAfterRedeem(block.timestamp, _amount, backing);
     }
 
     /**
