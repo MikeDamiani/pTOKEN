@@ -7,17 +7,17 @@ import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 /**
- * @title PANTHEON, Reserve Currency and Store of Value for $ETH
+ * @title pTOKEN, Yield bearing token backed by ERC20
  *
- * @notice The ETH / PANTHEON ratio is designed to appreciate for every mints and redeems that occur.
- * @custom:idea The Idea behind this token model has been inspired by Jaypeggers
+ * @notice The backing / pTOKEN ratio is designed to appreciate for every mints and redeems that occur.
+ * @custom:purpose The main purpose of pTOKENs is to generate revenue and contribute to bribing economy of ve(3;3) Dexes while being backed
  *
  * @author Michael Damiani
  */
 contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
 
     using SafeERC20 for IERC20;
-    
+
     /**
      * @custom:section                           ** ERRORS **
      */
