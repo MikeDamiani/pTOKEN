@@ -389,11 +389,11 @@
 			]
 		},
 		"erc20.sol": {
-			"keccak256": "0xd3b19c6e95783a7842ac3546dc2668c7645a1e6bd5931e119aef6870ba7dc9a6",
+			"keccak256": "0xec811e402b5d0aee7c5b3ee56192c9dfb538a28d3cb79b1725f44b6e931ef1f5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fc95e72a781e7e9acbdbdf2b83ce9e6680d1361f7e84fb88922df35047a5a33b",
-				"dweb:/ipfs/QmQDB7qMtMzLseKoFAtKuQsmsbVonGWA7MGpTHXtcx4mEZ"
+				"bzz-raw://486b438eb998acb0c4daf66fd660f7041aa8215d64bc7538b2100d80fc71b8fe",
+				"dweb:/ipfs/QmQcrh2EVtJHcg4vVUF4aWWGkMofczh6Zmf1TDwCbrge4Z"
 			]
 		}
 	},

@@ -25,6 +25,8 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
     error MustTradeOverMin();
     error MintAndRedeemFeeNotInRange();
     error TeamFeeNotInRange();
+    error NotStartedYet();
+    error ContractAlreadyFilled();
 
     /**
      * @custom:section                           ** IMMUTABLES **
@@ -87,7 +89,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
      * @notice  this function doesn't have fees, it will mint pTOKEN in a 1:1 ratio with _value
      */
     function fillContract(uint256 _value) external onlyOwner {
-        require(!start);
+        if (start == true) revert ContractAlreadyFilled();
         SafeERC20.safeTransferFrom(_BACKING, msg.sender, address(this), _value);
         _mint(msg.sender, _value);
         transfer(0x000000000000000000000000000000000000dEaD, 1000);
@@ -106,13 +108,15 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
      */
     function mint(address receiver, uint256 _amount) external nonReentrant {
         if (_amount < _MIN) revert MustTradeOverMin();
+        if (!start) revert NotStartedYet();
 
         uint256 pToken = _BACKINGtoPTOKEN(_amount);
 
         uint256 backingToFeeAddress = _amount / FEES;
         totalBacking += (_amount - backingToFeeAddress);
-
-        SafeERC20.safeTransferFrom(_BACKING, msg.sender, feeAddress, backingToFeeAddress);
+        
+        _BACKING.safeTransferFrom(msg.sender, address(this), _amount);
+        _BACKING.safeTransfer(feeAddress, backingToFeeAddress);
 
         _mint(receiver, (pToken * MINT_AND_REDEEM_FEE) / _FEE_BASE_1000);
 
@@ -126,6 +130,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
      */
     function redeem(uint256 _amount) external nonReentrant {
         if (_amount < _MIN) revert MustTradeOverMin();
+        if (!start) revert NotStartedYet();
 
         uint256 backing = _PTOKENtoBACKING(_amount);
 

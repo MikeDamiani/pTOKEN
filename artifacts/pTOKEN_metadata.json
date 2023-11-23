@@ -23,12 +23,22 @@
 			},
 			{
 				"inputs": [],
+				"name": "ContractAlreadyFilled",
+				"type": "error"
+			},
+			{
+				"inputs": [],
 				"name": "MintAndRedeemFeeNotInRange",
 				"type": "error"
 			},
 			{
 				"inputs": [],
 				"name": "MustTradeOverMin",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotStartedYet",
 				"type": "error"
 			},
 			{
@@ -1040,11 +1050,11 @@
 			]
 		},
 		"pTOKEN.sol": {
-			"keccak256": "0x23806e85729a537aa43f30d75c34d4f005e8faee6306e76c3eee02e532f20eaa",
+			"keccak256": "0xbfc862fcb3cb4319e5674169f6e597474038b0d957e7d4470e5ea37fb4e3c66f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4b8aff5abd869001c51671220dd7d58069fecda0b7c30db087a1daa39f7850dc",
-				"dweb:/ipfs/QmTMQQb7AuFDrQDmWcMT3xMgqXNpcBPf3pehQoDovcYBrH"
+				"bzz-raw://dfa2727bd9c4c464cb32ddc52790b8b1751aecf10105bc4b8d381a1e3e7425f9",
+				"dweb:/ipfs/QmQeX5e8wYuGS2vfatPvy9gqWc7k5DES6Cqr97GnYAu2Rt"
 			]
 		}
 	},
