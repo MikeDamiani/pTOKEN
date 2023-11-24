@@ -90,6 +90,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
      */
     function fillContract(uint256 _value) external onlyOwner {
         if (start == true) revert ContractAlreadyFilled();
+
         SafeERC20.safeTransferFrom(_BACKING, msg.sender, address(this), _value);
         _mint(msg.sender, _value);
         transfer(0x000000000000000000000000000000000000dEaD, 1000);
@@ -130,7 +131,6 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
      */
     function redeem(uint256 _amount) external nonReentrant {
         if (_amount < _MIN) revert MustTradeOverMin();
-        if (!start) revert NotStartedYet();
 
         uint256 backing = _PTOKENtoBACKING(_amount);
 
@@ -140,9 +140,9 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
 
         _burn(msg.sender, _amount);
 
-        SafeERC20.safeTransferFrom(_BACKING, address(this), feeAddress, backingToFeeAddress);
+        SafeERC20.safeTransfer(_BACKING, feeAddress, backingToFeeAddress);
 
-        SafeERC20.safeTransferFrom(_BACKING, address(this), msg.sender, backingToSender);
+        SafeERC20.safeTransfer(_BACKING, msg.sender, backingToSender);
 
         emit PriceAfterRedeem(block.timestamp, _amount, backing);
     }
@@ -163,7 +163,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
      * @notice this function is used by Owner to modify the total FEE %
      */
     function setMintAndRedeemFee(uint16 _amount) external onlyOwner {
-        if(_amount > 980 || _amount < 950) revert MintAndRedeemFeeNotInRange();
+        if(_amount > 990 || _amount < 960) revert MintAndRedeemFeeNotInRange();
         MINT_AND_REDEEM_FEE = _amount;
         emit MintAndRedeemFeeUpdated(_amount);
     }
@@ -174,7 +174,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
      * @notice Incentives for liquidity providers are included in the Team fee (FEES)
      */
     function setTeamFee(uint16 _amount) external onlyOwner {
-        if(_amount > 100 || _amount < 25) revert TeamFeeNotInRange(); 
+        if(_amount > 100 || _amount < 30) revert TeamFeeNotInRange(); 
         FEES = _amount;
         emit TeamFeeUpdated(_amount);
     }

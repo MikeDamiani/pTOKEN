@@ -1050,11 +1050,11 @@
 			]
 		},
 		"pTOKEN.sol": {
-			"keccak256": "0xbfc862fcb3cb4319e5674169f6e597474038b0d957e7d4470e5ea37fb4e3c66f",
+			"keccak256": "0x5beeaf2949918e4d9b6b3f37ec51929ab812374a7ae4c4ff9d39fc9ff05ea6ac",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://dfa2727bd9c4c464cb32ddc52790b8b1751aecf10105bc4b8d381a1e3e7425f9",
-				"dweb:/ipfs/QmQeX5e8wYuGS2vfatPvy9gqWc7k5DES6Cqr97GnYAu2Rt"
+				"bzz-raw://89cba2a90e47df0588ce2af72e6cb50323d488f9f25eb6259b14f664b796b281",
+				"dweb:/ipfs/QmcG1ftrX3avxhTzpL8XLBMSBkR2aC2v6Eia5X4RxNFhay"
 			]
 		}
 	},

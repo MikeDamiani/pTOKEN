@@ -342,7 +342,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"erc20.sol": "GLDToken"
+			"ERC20.sol": "GLDToken"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -388,12 +388,12 @@
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
 			]
 		},
-		"erc20.sol": {
-			"keccak256": "0xec811e402b5d0aee7c5b3ee56192c9dfb538a28d3cb79b1725f44b6e931ef1f5",
+		"ERC20.sol": {
+			"keccak256": "0xe9939f021bc16f104640ead018b3cc5a919aee9685260873221110c5ee199ec7",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://486b438eb998acb0c4daf66fd660f7041aa8215d64bc7538b2100d80fc71b8fe",
-				"dweb:/ipfs/QmQcrh2EVtJHcg4vVUF4aWWGkMofczh6Zmf1TDwCbrge4Z"
+				"bzz-raw://1be0ac086d0349ea1e0e7ae899c169472e889c197be18174a86604c50b5c67fd",
+				"dweb:/ipfs/QmaDUspyp5wicgWNLdEBwK1LRVSPm25pGZWEvtXBaUAk5L"
 			]
 		}
 	},
