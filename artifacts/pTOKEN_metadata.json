@@ -93,7 +93,7 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "uint256",
 						"name": "MINT_AND_REDEEM_FEE",
 						"type": "uint256"
@@ -194,7 +194,7 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "uint256",
 						"name": "FEES",
 						"type": "uint256"
@@ -1050,11 +1050,11 @@
 			]
 		},
 		"pTOKEN.sol": {
-			"keccak256": "0x5beeaf2949918e4d9b6b3f37ec51929ab812374a7ae4c4ff9d39fc9ff05ea6ac",
+			"keccak256": "0x337756162e14536b473f8e9fafa8ae4e80cd9999d6f4a2387dbd68afa837316a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://89cba2a90e47df0588ce2af72e6cb50323d488f9f25eb6259b14f664b796b281",
-				"dweb:/ipfs/QmcG1ftrX3avxhTzpL8XLBMSBkR2aC2v6Eia5X4RxNFhay"
+				"bzz-raw://1e0bad7ff482e95aa05374ca0660d1c3940dca8efcf99c5ddd8e5dd1c045d585",
+				"dweb:/ipfs/QmQBpDHxKmKKrWw3xRoXNE6BFddcBoR5WCsiLDUrfHpPwc"
 			]
 		}
 	},

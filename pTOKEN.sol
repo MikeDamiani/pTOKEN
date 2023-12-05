@@ -65,8 +65,8 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
     );
     event FeeAddressUpdated(address indexed newFeeAddress);
     event TotalBackingFixed(uint256 indexed totalBackingEmergencyFixed);
-    event MintAndRedeemFeeUpdated(uint256 MINT_AND_REDEEM_FEE);
-    event TeamFeeUpdated(uint256 FEES);
+    event MintAndRedeemFeeUpdated(uint256 indexed MINT_AND_REDEEM_FEE);
+    event TeamFeeUpdated(uint256 indexed FEES);
 
     /**
      * @custom:section                           ** CONSTRUCTOR **
