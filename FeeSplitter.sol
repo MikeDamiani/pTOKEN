@@ -22,13 +22,18 @@ contract FeeSplitter is Ownable2Step, ReentrancyGuard {
     IERC20 private immutable _PTOKEN;
 
     /**
-     * @custom:section                           ** CONSTANTS **
+     * @custom:section                           ** PRIVATE VARIABLES **
      */
     address private BRIBES;
     address private PANTHEON;
     address private EQUALDAO;
 
     uint256 private ProfitDivider;
+
+    /**
+     * @custom:section                           ** PUBLIC VARIABLES **
+     */
+    uint256 public totalBribes;
 
     /**
      * @custom:section                           ** EVENTS **
@@ -67,6 +72,7 @@ contract FeeSplitter is Ownable2Step, ReentrancyGuard {
         uint256 remaining = _PTOKEN.balanceOf(address(this));
 
         SafeERC20.safeTransfer(_PTOKEN, BRIBES, remaining);
+        totalBribes += remaining;
 
         emit FeeSent(block.timestamp, profit, remaining);
     }

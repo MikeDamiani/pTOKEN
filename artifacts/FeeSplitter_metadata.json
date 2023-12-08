@@ -241,6 +241,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "totalBribes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -290,10 +303,13 @@
 			},
 			"stateVariables": {
 				"BRIBES": {
-					"custom:section": "** CONSTANTS **"
+					"custom:section": "** PRIVATE VARIABLES **"
 				},
 				"_PTOKEN": {
 					"custom:section": "** IMMUTABLES **"
+				},
+				"totalBribes": {
+					"custom:section": "** PUBLIC VARIABLES **"
 				}
 			},
 			"version": 1
@@ -401,11 +417,11 @@
 			]
 		},
 		"FeeSplitter.sol": {
-			"keccak256": "0x3a7ae1bb82c49cd7d6bd27179d989e4099878c139a4928fb0324e25279f7b9f6",
+			"keccak256": "0x19f95ddac20e7cd4e749a89773119f5a8b55c1e9952c3fb2f156b3280efc81cf",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fe5aa9da234226404399d57378111b3a23ff8e1fc48d7784d4ba435183379ad7",
-				"dweb:/ipfs/QmX99jgAvrnTzw4b5F9NzuEckhS8eqnPgiUdg8h3VF4FEE"
+				"bzz-raw://e0ca069e07af04591f249fd587cc9380f571b6b44c50ddb7dec7031a351d1969",
+				"dweb:/ipfs/QmdmDZoU1ECTtHALco1QSTvuKWwUs93kBuMwofmBUwNGAt"
 			]
 		}
 	},
