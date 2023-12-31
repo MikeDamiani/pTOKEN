@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.19+commit.7dd6d404"
+		"version": "0.8.18+commit.87f61d96"
 	},
 	"language": "Solidity",
 	"output": {
@@ -1050,11 +1050,11 @@
 			]
 		},
 		"pTOKEN.sol": {
-			"keccak256": "0x337756162e14536b473f8e9fafa8ae4e80cd9999d6f4a2387dbd68afa837316a",
+			"keccak256": "0xd231b5ae50c2972e96afb4121c796bb35d75c7c9519d82fa558315fab42421b0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1e0bad7ff482e95aa05374ca0660d1c3940dca8efcf99c5ddd8e5dd1c045d585",
-				"dweb:/ipfs/QmQBpDHxKmKKrWw3xRoXNE6BFddcBoR5WCsiLDUrfHpPwc"
+				"bzz-raw://c4461a7f8308a9ebf0996b21d376e6831e866f57bd78b29e0452316f34ccbd66",
+				"dweb:/ipfs/QmZpHjRugkjXHxbbzSoDkbermwq7kSns7yaLTqAewbS5Tv"
 			]
 		}
 	},
