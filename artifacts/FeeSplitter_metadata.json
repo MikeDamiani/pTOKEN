@@ -417,11 +417,11 @@
 			]
 		},
 		"FeeSplitter.sol": {
-			"keccak256": "0x5bb4a07987201ae468ab4523819b79c86761cf95d4a1bfa6b6a2030dcb66df1f",
+			"keccak256": "0x1a616a764e386fa107288504d81b5ccc75019d29fcc0124370fb18ae5f7fc0f1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b38705d56ca5ec659f4b234a529a9964b794fa8da8c6ef8731e81df762107a6d",
-				"dweb:/ipfs/QmVaigUiw7DaDnpFrSMHgLoPevawnLFKBozdf2MLKcveEp"
+				"bzz-raw://d4ead3936af528c77506464ff7bb663f923feb938c603e37ceb86bcb28fd2762",
+				"dweb:/ipfs/QmUakxwArBLGA7iNeuSTPLLn8xQZJfjaNe6b7aEhsUP8R6"
 			]
 		}
 	},
