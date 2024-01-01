@@ -834,7 +834,7 @@
 				},
 				"getRedeemPrice(uint256)": {
 					"params": {
-						"_amount": ": is the amount of pTOKEN"
+						"_amount": ": is the amount of backing"
 					}
 				},
 				"increaseAllowance(address,uint256)": {
@@ -1050,11 +1050,11 @@
 			]
 		},
 		"pTOKEN.sol": {
-			"keccak256": "0xd231b5ae50c2972e96afb4121c796bb35d75c7c9519d82fa558315fab42421b0",
+			"keccak256": "0x4a6047f1da3298a64b4fc7da5070474f8f5f236048e85504e6f4b649b409acd5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c4461a7f8308a9ebf0996b21d376e6831e866f57bd78b29e0452316f34ccbd66",
-				"dweb:/ipfs/QmZpHjRugkjXHxbbzSoDkbermwq7kSns7yaLTqAewbS5Tv"
+				"bzz-raw://fbf215abf3582d742130e6d25f1c21d1c0975f8fe690b2a77153c92c21ac07e7",
+				"dweb:/ipfs/QmXgL17xhvp8ibNsCKFvrjGGUakkrEawJ4M1wHKKc3kENt"
 			]
 		}
 	},

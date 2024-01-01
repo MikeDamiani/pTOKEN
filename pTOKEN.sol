@@ -205,7 +205,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
     }
 
     /**
-     * @param _value: is the amount of pTOKEN
+     * @param _value: is the amount of pTOKENs
      * @notice This function is used inside other function to get the current pTOKEN / Backing ratio
      */
     function _BACKINGtoPTOKEN(uint256 _value) private view returns (uint256) {
@@ -231,24 +231,22 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
 
     /**
      * @param _amount: is the amount of backing
-     * @notice This function is used inside other function to get the current Mint price of pTOKEN in Backing
-     */
-    function getMintPrice(uint256 _amount) external view returns (uint256) {
-        return
-            (_amount * (totalSupply()) * (MINT_AND_REDEEM_FEE)) /
-            (totalBacking) /
-            (_FEE_BASE_1000);
-    }
-
-    /**
-     * @param _amount: is the amount of pTOKEN
      * @notice This function is used inside other function to get the current Redeem price of pTOKEN in Backing
      */
     function getRedeemPrice(uint256 _amount) external view returns (uint256) {
-        return
-            ((_amount * totalBacking) * (MINT_AND_REDEEM_FEE)) /
-            (totalSupply()) /
-            (_FEE_BASE_1000);
+        uint256 ratio = _PTOKENtoBACKING(_amount);
+        uint256 redeemPrice = (ratio * MINT_AND_REDEEM_FEE) / _FEE_BASE_1000;
+        return redeemPrice;
+    }
+    
+    /**
+     * @param _amount: is the amount of backing
+     * @notice This function is used inside other function to get the current Mint price of pTOKEN in Backing
+     */
+    function getMintPrice(uint256 _amount) external view returns (uint256) {
+        uint256 ratio = _PTOKENtoBACKING(_amount);
+        uint256 mintPrice = (ratio * _FEE_BASE_1000) / MINT_AND_REDEEM_FEE;
+        return mintPrice;
     }
 
     /**
