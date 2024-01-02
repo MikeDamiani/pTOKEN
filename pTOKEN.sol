@@ -170,7 +170,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
 
     /**
      * @param _amount: 
-     * @notice Team fee can't be more than 4% and less than 1% 
+     * @notice Team fee can't be more than 3.33% and less than 1% 
      * @notice Incentives for liquidity providers are included in the Team fee (FEES)
      */
     function setTeamFee(uint16 _amount) external onlyOwner {
@@ -238,7 +238,7 @@ contract pTOKEN is ERC20Burnable, Ownable2Step, ReentrancyGuard {
         uint256 redeemPrice = (ratio * MINT_AND_REDEEM_FEE) / _FEE_BASE_1000;
         return redeemPrice;
     }
-    
+
     /**
      * @param _amount: is the amount of backing
      * @notice This function is used inside other function to get the current Mint price of pTOKEN in Backing

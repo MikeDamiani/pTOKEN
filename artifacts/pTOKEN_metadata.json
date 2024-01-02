@@ -938,7 +938,7 @@
 					"notice": "this function is used by Owner to modify the total FEE %"
 				},
 				"setTeamFee(uint16)": {
-					"notice": "Team fee can't be more than 4% and less than 1% Incentives for liquidity providers are included in the Team fee (FEES)"
+					"notice": "Team fee can't be more than 3.33% and less than 1% Incentives for liquidity providers are included in the Team fee (FEES)"
 				}
 			},
 			"notice": "The backing / pTOKEN ratio is designed to appreciate for every mints and redeems that occur.",
@@ -1050,11 +1050,11 @@
 			]
 		},
 		"pTOKEN.sol": {
-			"keccak256": "0x4a6047f1da3298a64b4fc7da5070474f8f5f236048e85504e6f4b649b409acd5",
+			"keccak256": "0xd024cccaa71dd29839d70027f06e2c3381cd84a0050719ef121a2cfa166db206",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fbf215abf3582d742130e6d25f1c21d1c0975f8fe690b2a77153c92c21ac07e7",
-				"dweb:/ipfs/QmXgL17xhvp8ibNsCKFvrjGGUakkrEawJ4M1wHKKc3kENt"
+				"bzz-raw://621b30fb97e194e07c1f075a1d077854c64a54a3a32ad736a4fa195552433f4b",
+				"dweb:/ipfs/QmeDuHHc7CXcYUAb2GyXprgZ67k3NeZksjJXNX2yrDGQBQ"
 			]
 		}
 	},
